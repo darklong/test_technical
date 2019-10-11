@@ -1,0 +1,1 @@
+export const DO_SOME_THING = 'some_thing'
