@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import store from './src/store'
 import { connect } from 'react-redux'
 import * as actions from './src/actions'
-import { DO_SOME_THING } from './src/actions/types'
+
 
 export default function App() {
   return (
@@ -21,16 +21,9 @@ class Main extends React.Component {
         <Text>Open up App.js to start working on your app!</Text>
         <Button 
           title="click me"
-          onPress = {() => { 
-          //   store.dispatch({
-          //     type: DO_SOME_THING,
-          //     data: "this is data"
-          // })
-            console.log(this.props)
-            console.log(this.state)
-            console.log(actions)
-          }}
+          onPress = {this.props.doSomeThing}
         />
+        <Text>{this.props.data}</Text>
       </View>
     )}
 }
@@ -44,15 +37,6 @@ const mapStateToProps = (state, ownProps) => {
 
 const MainAfterConnect = connect(mapStateToProps,actions)(Main)
 
-// export default function App() {
-//   return (
-//       <View style={styles.container}>
-//         <Text>Open up App.js to start working on your app!</Text>
-        
-//       </View>
-//   );
-// }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -65,9 +49,9 @@ const styles = StyleSheet.create({
 // export default App
 
 // ----------------------debug-----------------------
-const unsubscribe = store.subscribe(() => {
-  let date = new Date()
-  console.log(`--------DEBUG_APP_START-----${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}---`)
-  console.log(store.getState())
-  console.log('--------DEBUG_APP_END----------')
-})
+// const unsubscribe = store.subscribe(() => {
+//   let date = new Date()
+//   console.log(`--------DEBUG_APP_START-----${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}---`)
+//   console.log(store.getState())
+//   console.log('--------DEBUG_APP_END----------')
+// })
